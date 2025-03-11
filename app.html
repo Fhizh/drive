@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's File Storage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>TeachFiles</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active" data-view="home"><i class="fas fa-home"></i> Home</a>
+                <a href="#" data-view="files"><i class="fas fa-folder"></i> My Files</a>
+                <a href="#" data-view="favorites"><i class="fas fa-star"></i> Favorites</a>
+                <a href="#" data-view="shared"><i class="fas fa-share-alt"></i> Shared</a>
+                <a href="#" data-view="profile"><i class="fas fa-user-circle"></i> Profile</a>
+            </nav>
+            <div class="storage-info">
+                <p>Storage Used</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 45%"></div>
+                </div>
+                <p class="storage-text">4.5 GB of 10 GB</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search files...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Teacher</span>
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="avatar">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="upload-section">
+                    <div class="upload-box">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <input type="file" id="fileInput" multiple>
+                        <p>Drag & drop files or click to upload</p>
+                    </div>
+                    <button id="uploadBtn" class="primary-btn">
+                        <i class="fas fa-upload"></i> Upload Files
+                    </button>
+                </div>
+
+                <div class="files-section">
+                    <div class="section-header">
+                        <h2>Recent Files</h2>
+                        <div class="view-options">
+                            <button class="view-btn active"><i class="fas fa-list"></i></button>
+                            <button class="view-btn"><i class="fas fa-th-large"></i></button>
+                        </div>
+                    </div>
+                    <ul id="fileList"></ul>
+                </div>
+            </div>
+
+            <div class="profile-section hidden">
+                <div class="section-header">
+                    <h2>User Profile</h2>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://via.placeholder.com/150" alt="Profile" id="profileAvatar">
+                            <button class="change-avatar-btn">
+                                <i class="fas fa-camera"></i>
+                                <input type="file" id="avatarInput" accept="image/*">
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">Loading...</h3>
+                            <p id="profileEmail">loading@email.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Full Name</label>
+                                <input type="text" id="nameInput" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-envelope"></i> Email</label>
+                                <input type="email" id="emailInput" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-lock"></i> Change Password</label>
+                                <input type="password" id="newPassword" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-building"></i> School/Institution</label>
+                                <input type="text" id="schoolInput">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-graduation-cap"></i> Subject Taught</label>
+                                <input type="text" id="subjectInput">
+                            </div>
+                            <button type="submit" class="primary-btn">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-file"></i>
+                            <div class="stat-info">
+                                <h4>Total Files</h4>
+                                <p id="totalFiles">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-star"></i>
+                            <div class="stat-info">
+                                <h4>Favorites</h4>
+                                <p id="totalFavorites">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-share-alt"></i>
+                            <div class="stat-info">
+                                <h4>Shared Files</h4>
+                                <p id="totalShared">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="previewFileName">File Preview</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html> 
